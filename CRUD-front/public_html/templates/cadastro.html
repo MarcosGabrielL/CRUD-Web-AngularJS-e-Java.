@@ -1,0 +1,60 @@
+<form name="cadastroProdutosForm">
+    <h1>Cadastro</h1>
+    <label for="codigo">Código</label>
+    <input id="codigo" name="codigo" type="text" ng-model="produto.id"/>
+    <br>
+    <label for="descricao">Descrição</label>
+    <input id="descricao" name="descricao" type="text" ng-model="produto.descricao" />
+    <br>
+    <label for="preco">Preço</label>
+    <input id="preco" name="preco" type="text" ng-model="produto.preco" />
+    <br>
+    <p class="aviso" ng-repeat="erro in erros track by $index"> 
+        {{erro}}
+    </p>
+    <br>
+    <hr>
+    <h2>Movimentações</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Data/Hora</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="movimentacao in produto.movimentacoes | orderBy: 'dataHora' track by $index">
+                <td>{{movimentacao.dataHora| date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{movimentacao.tipo}}</td>
+                <td>{{movimentacao.quantidade}}</td>
+                <td>
+                    <a href ng-click="editarMovimentacao(movimentacao)">[Editar]</a>
+                    <a href ng-click="excluirMovimentacao(produto, movimentacao)">[Excluir]</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <div>
+        <label for="dataHoraMovimentacao">Data/Hora:</label>
+        <input type="datetime-local" id="dataHoraMovimentacao" ng-model="movimentacao.dataHora"/>
+        <br>
+        <label for="tipoMovimentacao">Tipo:</label>
+        <select id="tipoMovimentacao" ng-model="movimentacao.tipo">
+            <option value="ENTRADA">Entrada</option>
+            <option value="SAIDA">Saída</option>
+        </select>
+        <br>
+        <label for="quantidadeMovimentacao">Quantidade:</label>
+        <input type="text" id="quantidadeMovimentacao" ng-model="movimentacao.quantidade"/>
+        <br>
+        <button ng-click="salvarMovimentacao(produto, movimentacao)">Salvar</button>
+        <button ng-click="cancelarMovimentacao()">Cancelar</button>
+    </div>
+    <hr>
+    <button ng-click="salvar(produto)" ng-disabled="cadastroProdutosForm.$invalid">Salvar</button>
+    <button ng-click="salvarCadastrarNovo(produto)" ng-disabled="cadastroProdutosForm.$invalid">Salvar e Cadastrar Novo</button>
+    <button ng-click="cancelar()">Cancelar</button>
+</form>

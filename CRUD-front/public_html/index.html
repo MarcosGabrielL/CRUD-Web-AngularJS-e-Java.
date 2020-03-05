@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="produtosApp">
+    <head>
+        <title>Desenvolvendo Aplicações Web com AngularJS e Java</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/estilo.css" />
+    </head>
+    <body>
+        <h1>Produtos</h1>
+        [ <a href="#/tabela"> Tabela</a> | <a href="#/cadastro"> Cadastro</a> ]
+        <ng-view></ng-view>
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/angular-locale_pt-br.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>

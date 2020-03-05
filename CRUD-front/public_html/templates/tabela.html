@@ -1,0 +1,22 @@
+<h1>Tabela de Preços</h1>
+<input type="text" ng-model="pesquisa" placeholder="Pesquisa" />
+<table>
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="produto in produtos | filter:{descricao: pesquisa} track by $index">
+            <td ng-dblclick="editar(produto)">{{produto.id}}</td>
+            <td ng-dblclick="editar(produto)">{{produto.descricao | uppercase}}</td>
+            <td ng-dblclick="editar(produto)">{{produto.preco | currency: 'R$ '}}</td>
+            <td><a href="#/cadastro/{{produto.id}}">[Editar]</a></td>
+            <td><a href="" ng-click="excluir(produto)">[Excluir]</a></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,4 @@
+﻿DELETE FROM produtos WHERE descricao ISNULL OR preco ISNULL;
+
+ALTER TABLE produtos ALTER COLUMN descricao SET NOT NULL;
+ALTER TABLE produtos ALTER COLUMN preco SET NOT NULL;
